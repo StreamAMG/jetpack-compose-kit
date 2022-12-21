@@ -32,13 +32,17 @@ fun Tabs(pagerState: PagerState, tabContentList: List<TabContent>) {
         tabContentList.forEachIndexed { index, _ ->
             Tab(
                 icon = {
-                    Icon(imageVector = tabContentList[index].icon, contentDescription = null)
+                    tabContentList[index].icon?.let { icon ->
+                        Icon(imageVector = icon, contentDescription = null)
+                    }
                 },
                 text = {
-                    Text(
-                        tabContentList[index].name,
-                        color = if (pagerState.currentPage == index) Color(0xFF6d23f9) else Color.LightGray
-                    )
+                    tabContentList[index].name?.let { name ->
+                        Text(
+                            name,
+                            color = if (pagerState.currentPage == index) Color(0xFF6d23f9) else Color.LightGray
+                        )
+                    }
                 },
                 selected = pagerState.currentPage == index,
                 onClick = {

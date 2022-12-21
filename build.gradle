@@ -10,8 +10,8 @@ plugins {
     id 'maven-publish'
 }
 
-ext.VERSION_CODE = 4
-ext.VERSION_NAME = "1.0.4"
+ext.VERSION_CODE = 5
+ext.VERSION_NAME = "1.0.5"
 
 publishing {
     publications {
