@@ -10,6 +10,15 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            name = "nexus"
+            url = uri("http://localhost:8081/repository/maven-releases/")
+            setAllowInsecureProtocol(true)
+            credentials {
+                username = "admin"
+                password = "admin"
+            }
+        }
     }
 }
 rootProject.name = "Jetpack Compose Kit"
