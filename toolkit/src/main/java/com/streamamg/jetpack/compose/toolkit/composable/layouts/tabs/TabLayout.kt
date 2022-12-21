@@ -25,11 +25,12 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 
 
-@OptIn(ExperimentalUnitApi::class)
+
 @ExperimentalPagerApi
 @Composable
 fun TabLayout(
-    title: String,
+    addTopBar: Boolean = false,
+    title: String? = "",
     tabs: List<TabContent>,
     scrollable: Boolean
 ) {
@@ -39,26 +40,32 @@ fun TabLayout(
     Column(
         modifier = Modifier.background(Color.White)
     ) {
-        TopAppBar(backgroundColor = Color(0xFFffffff)) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = title,
-                    style = TextStyle(color = Color(0xFF6d23f9)),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = TextUnit(
-                        18F,
-                        TextUnitType.Sp
-                    ),
-                    modifier = Modifier.padding(all = Dp(5F)),
-                    textAlign = TextAlign.Center
-                )
-            }
-        }
+        if (addTopBar) TopBar(title = title ?: "")
         Tabs(pagerState = pagerState, tabs, scrollable = scrollable)
         TabsContent(pagerState = pagerState, tabs)
+    }
+}
+
+@OptIn(ExperimentalUnitApi::class)
+@Composable
+fun TopBar(title: String, ) {
+    TopAppBar(backgroundColor = Color(0xFFffffff)) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = title,
+                style = TextStyle(color = Color(0xFF6d23f9)),
+                fontWeight = FontWeight.Bold,
+                fontSize = TextUnit(
+                    18F,
+                    TextUnitType.Sp
+                ),
+                modifier = Modifier.padding(all = Dp(5F)),
+                textAlign = TextAlign.Center
+            )
+        }
     }
 }
