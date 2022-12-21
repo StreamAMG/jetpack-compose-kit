@@ -30,7 +30,7 @@ import com.google.accompanist.pager.rememberPagerState
 @Composable
 fun TabLayout(title: String, tabs: List<TabContent>) {
 
-    val pagerState = rememberPagerState(pageCount = 3)
+    val pagerState = rememberPagerState(pageCount = tabs.size)
 
     Column(
         modifier = Modifier.background(Color.White)
