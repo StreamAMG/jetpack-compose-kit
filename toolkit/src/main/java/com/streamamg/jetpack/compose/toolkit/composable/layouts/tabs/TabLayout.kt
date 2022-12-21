@@ -28,7 +28,11 @@ import com.google.accompanist.pager.rememberPagerState
 @OptIn(ExperimentalUnitApi::class)
 @ExperimentalPagerApi
 @Composable
-fun TabLayout(title: String, tabs: List<TabContent>) {
+fun TabLayout(
+    title: String,
+    tabs: List<TabContent>,
+    scrollable: Boolean
+) {
 
     val pagerState = rememberPagerState(pageCount = tabs.size)
 
@@ -54,7 +58,7 @@ fun TabLayout(title: String, tabs: List<TabContent>) {
                 )
             }
         }
-        Tabs(pagerState = pagerState, tabs)
+        Tabs(pagerState = pagerState, tabs, scrollable = scrollable)
         TabsContent(pagerState = pagerState, tabs)
     }
 }

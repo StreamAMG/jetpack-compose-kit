@@ -105,7 +105,8 @@ class MainActivity : ComponentActivity() {
         when {
             navigateToHomeScreen -> HomeLayout(
                 title = tabLayoutTitle,
-                tabs = tabs
+                tabs = tabs,
+                scrollable = false
             )
             navigateToSignUp -> SignInForm (
                 signInButtonConfig = signInButtonConfig,
